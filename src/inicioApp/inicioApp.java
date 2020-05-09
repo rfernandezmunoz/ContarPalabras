@@ -14,70 +14,17 @@ public class inicioApp {
                 contadorVecesRepetida = new int[Cadena.length()];
                 arrayLetrasRepetidas = new char[Cadena.length()];
                 
-		int TotalCaracteres = contarCaracteresTotal(Cadena);
-                int TotalPalabras = contarNumeroPalabras(Cadena);
-                contarTodosCaracteres(Cadena);
+		int TotalCaracteres = ContarResultado.contarCaracteresTotal(Cadena);
+                int TotalPalabras = ContarResultado.contarNumeroPalabras(Cadena);
+                ContarResultado.contarTodosCaracteres(Cadena);
                 
-                System.out.println(textoCaracterTotal(TotalCaracteres));
-                System.out.println(textoNumeroPalabras(TotalPalabras));
+                System.out.println(PintarResultado.textoCaracterTotal(TotalCaracteres));
+                System.out.println(PintarResultado.textoNumeroPalabras(TotalPalabras));
                 for(int i=0;i<contadorVecesRepetida.length;i++){
                     if(contadorVecesRepetida[i] >=1 && arrayLetrasRepetidas[i] != ' '){
-                        System.out.println(textoTodosCaracteres(i));
+                        System.out.println(PintarResultado.textoTodosCaracteres(i));
                     }
                 }
                 
         }//MAIN
-	
-        static int contarCaracteresTotal(String Cadena){
-            for(int i=0;i<Cadena.length();i++) {
-                if(Cadena.charAt(i)!= ' ')
-				ContadorCaracteres++;
-            }
-            return ContadorCaracteres;
-        }//contarCaracteresTotal
-	
-        static int contarNumeroPalabras(String Cadena){
-            for(int i=0;i<Cadena.length();i++) {
-		if(Cadena.charAt(i)== ' ')
-                    ContadorEspacios++;
-            }
-            return ContadorEspacios;
-        }//contarNumeroPalabras
-        
-        static int[] contarTodosCaracteres(String Cadena){
-            for(int i=0;i<Cadena.length();i++) {
-		char letraActual = Cadena.charAt(i);
-		boolean letraEncontrada = false;
-		int j = 0;
-		while(j<arrayLetrasRepetidas.length && letraEncontrada == false) {
-                    //Inserto en el array la letra e inicializo el contadorVeces Repetida
-                    if (letraEncontrada == false && contadorVecesRepetida[j]==0) {
-			arrayLetrasRepetidas[j]= letraActual;
-			contadorVecesRepetida[j]++;
-			letraEncontrada = true;
-                    }
-                    else{
-                    //Búsqueda de una letra en una array
-                        if(letraActual == arrayLetrasRepetidas[j]) {
-                            contadorVecesRepetida[j]++;
-                            letraEncontrada = true;
-			}
-                    }
-                    j++;
-		}
-            }
-            return contadorVecesRepetida;
-        }//contarTodosCaracteres
-        
-        static String textoCaracterTotal(int ContadorCaracteres){
-            return "Hay un total de "+ContadorCaracteres+" caracteres.";
-        }//ContadorCaracteres	
-        
-        static String textoNumeroPalabras(int ContadorEspacios){
-            return "Hay un total de "+ContadorEspacios+" palabras";
-        }//ContadorEspacios
-        
-        static String textoTodosCaracteres(int i){
-            return "La letra "+arrayLetrasRepetidas[i]+" se repite "+contadorVecesRepetida[i];
-        }
 }
